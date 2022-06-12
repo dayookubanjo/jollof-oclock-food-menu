@@ -1,0 +1,36 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+    {% block body %}
+
+
+
+    {% for item in item_list %}
+    <div class="row">
+        <div class="col-md-3 offset-md-2">
+            <img class="card" height="250px" width="250px" src="{{ item.item_image.url }}" alt="">
+        </div>
+        <div class="col-md-4">
+            <h3>{{ item.item_name }}</h3>
+            <h5>{{ item.item_desc }}</h5>
+            <h6>{{ item.item_price }} CAD</h6>
+        </div>
+        <div class="col-md-2">
+            <a style="display: block; margin: 10px;" "{% url 'mainapp:detail' item.id %}" class="btn btn-success">Details</a>
+            {% if user.is_authenticated %}
+            <a style="display: block; margin: 10px;" href="{% url 'mainapp:update_item_url' item.id %}" class="btn btn-primary">Edit</a>
+            <a style="display: block; margin: 10px;" href="{% url 'mainapp:delete_item_url' item.id %}" class="btn btn-danger">Delete</a>
+            {% endif %} 
+        </div>
+    </div>
+
+    {% endfor %}
+    
+    {% endblock %}
+    
+
+    
+

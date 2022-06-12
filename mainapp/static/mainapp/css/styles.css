@@ -1,0 +1,17 @@
+body{
+    background-color: lightyellow;
+}
+
+.logo-image{
+    width:80px;
+    height: 50px;
+}
+
+.nav-link{
+    color: white;
+}
+
+.btn-cards-1{
+    display: block;
+
+}

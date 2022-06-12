@@ -1,0 +1,17 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
+Update Item
+{% endblock %}
+
+{% block body %}
+{% for m in messages %}
+<h3>{{ m }}</h3>
+{% endfor %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <h3 style="color:red;">Are you sure you want to delete: {{ item.item_name }}?</h3>
+    <button type="submit" class="btn btn-danger">Delete Food</button>
+</form>
+{% endblock %}

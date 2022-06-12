@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}
+
+            {% endblock title %}
+        </title>
+        <link rel="stylesheet" href="{% static 'mainapp/css/styles.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'mainapp:index' %}">Jollof O'Clock</a>
+        <ul class="nav">
+            <li class="nav-item">
+                <a style="color: white;" class = "nav-link" href="{% url 'mainapp:index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a style="color: white;" class="nav-link active" aria-current="page" href="{% url 'mainapp:create_item_url' %}">Add Item</a>
+            </li>
+
+            <!-- <li class="nav-item">
+              <a style="color: white;" class="nav-link" href="#">Login</a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li> -->
+          </ul>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
+    {% if messages %}
+    {% for item in messages %}
+    <div class="alert alert-{{ item.tags }}">
+     {{item}} 
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
